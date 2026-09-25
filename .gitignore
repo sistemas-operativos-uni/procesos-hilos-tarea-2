@@ -1,0 +1,21 @@
+# Binarios compilados de C
+modulo1_procesos_c/bin/
+*.o
+*.out
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Informe (si trabajas el .docx/.md antes de exportar y no quieres versionarlo pesado)
+informe/*.pdf
+
+# Editor
+.vscode/
+.idea/
