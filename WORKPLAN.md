@@ -4,11 +4,11 @@
 
 | Fase | Bloquea a | Responsable |
 |---|---|---|
-| 1. Diseño | Todo lo demás | Todos (liderado por Coordinador) |
-| 2. Módulo 1 (C) | Fase 4 (Medición) | Dev C |
-| 3. Módulo 2 (Python) | Fase 4 (Medición) | Dev Python |
-| 4. Medición y comparación | Fase 5 (Informe) | Tester/Analista |
-| 5. Informe + Sustentación | — | Coordinador (con apoyo de todos) |
+| 1. Diseño | Todo lo demás | Renato |
+| 2. Módulo 1 (C) | Fase 4 (Medición) | Kike |
+| 3. Módulo 2 (Python) | Fase 4 (Medición) | Adán + Renato |
+| 4. Medición y comparación | Fase 5 (Informe) | Tester/Analista -> Gabriel |
+| 5. Informe + Sustentación | — | Renato |
 
 Fases 2 y 3 corren **en paralelo**, sin dependencia entre sí. Fase 4 no puede iniciar hasta que ambas fases 2 y 3 estén cerradas.
 
@@ -16,7 +16,7 @@ Fases 2 y 3 corren **en paralelo**, sin dependencia entre sí. Fase 4 no puede i
 
 ## Tareas por integrante
 
-### Coordinador(a)
+### Coordinador(a) -> Renato
 - [ ] Convocar reunión de diseño (Fase 1), cerrar diagrama mostrador→pedidos→cocina.
 - [ ] Crear repo, estructura de carpetas, README.md.
 - [ ] Dar seguimiento diario/semanal al avance de Dev C y Dev Python.
@@ -24,7 +24,7 @@ Fases 2 y 3 corren **en paralelo**, sin dependencia entre sí. Fase 4 no puede i
 - [ ] Coordinar fecha y armado de la sustentación (5-8 min).
 - **Bloqueado por:** nada al inicio. Su tarea de integración (informe) está bloqueada por Fases 2, 3 y 4.
 
-### Dev C — Módulo 1
+### Dev C -> Kike — Módulo 1
 - [ ] Definir N_PEDIDOS (3-5) junto al equipo en Fase 1.
 - [ ] Implementar `mostrador.c`: loop de `fork()`, cada hijo imprime PID + N° de pedido.
 - [ ] Implementar `preparar_pedido.c` (o script) que ejecuta vía `execl()`.
@@ -33,7 +33,7 @@ Fases 2 y 3 corren **en paralelo**, sin dependencia entre sí. Fase 4 no puede i
 - [ ] Capturar pantalla de ejecución (para `docs/capturas/modulo1/`).
 - **Bloqueado por:** Fase 1 (diseño). **Bloquea a:** Tester (Fase 4).
 
-### Dev Python — Módulo 2
+### Dev Python -> Adán + Renato — Módulo 2
 - [ ] Definir las 3 tareas de cocina (cortar, freír, emplatar) en Fase 1.
 - [ ] Implementar `cocina_concurrente.py` con `threading.Thread`, `start()`, `join()`.
 - [ ] Implementar `cocina_secuencial.py` (mismas tareas, sin hilos, para el baseline).
@@ -41,7 +41,7 @@ Fases 2 y 3 corren **en paralelo**, sin dependencia entre sí. Fase 4 no puede i
 - [ ] Capturar pantalla de ejecución (para `docs/capturas/modulo2/`).
 - **Bloqueado por:** Fase 1 (diseño). **Bloquea a:** Tester (Fase 4).
 
-### Tester / Analista
+### Tester / Analista -> Gabriel
 - [ ] Escribir `comparar_tiempos.py` que corre secuencial y concurrente, calcula la mejora (secuencial ÷ concurrente).
 - [ ] Verificar que Módulo 1 ejecuta sin errores (todos los `fork()`/`exec()`/`wait()` correctos).
 - [ ] Armar la tabla comparativa de tiempos para el informe.
