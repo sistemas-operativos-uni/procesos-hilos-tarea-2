@@ -17,8 +17,9 @@ Simulación de un sistema de pedidos de comida rápida:
 ```bash
 cd modulo1_procesos_c
 make
-./bin/mostrador
+cd bin && ./mostrador
 ```
+Se ejecuta desde `bin/` porque `mostrador` lanza `./preparar_pedido` con una ruta relativa.
 
 ### Módulo 2
 ```bash
@@ -32,9 +33,9 @@ Ver árbol de carpetas en el repositorio.
 ## Equipo
 | Rol | Integrante |
 |---|---|
-| Coordinador(a) | — |
-| Dev C | — |
-| Dev Python | — |
-| Tester/Analista | — |
+| Coordinador(a) | Renato |
+| Dev C | Kike |
+| Dev Python | Adán, Renato |
+| Tester/Analista | Gabriel |
 
-Detalle de tareas y dependencias: ver `WORKPLAN.md`.
+Detalle de tareas y dependencias: ver `docs/context/WORKPLAN.md`.

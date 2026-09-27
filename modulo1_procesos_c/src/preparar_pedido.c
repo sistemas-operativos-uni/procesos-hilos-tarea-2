@@ -8,8 +8,7 @@
  * Recibe el número de pedido como argumento de línea de comandos
  * (execl se lo pasa) y simula el tiempo de preparación con sleep().
  *
- * Compilación:
- *   gcc preparar_pedido.c -o preparar_pedido
+ * Compilación: make (genera bin/preparar_pedido junto a bin/mostrador).
  */
 
 #include <stdio.h>

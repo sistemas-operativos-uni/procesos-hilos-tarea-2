@@ -11,14 +11,16 @@
  * El proceso principal espera (wait) a que TODOS los hijos terminen antes
  * de anunciar que el restaurante cierra.
  *
- * Compilación:
- *   gcc mostrador.c -o mostrador
- * Ejecución (desde la misma carpeta que preparar_pedido):
- *   ./mostrador
+ * Compilación y ejecución (desde modulo1_procesos_c/):
+ *   make
+ *   cd bin && ./mostrador
+ * Se ejecuta desde bin/ porque execl() usa la ruta relativa
+ * "./preparar_pedido", que se resuelve contra el directorio actual.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <unistd.h>
 #include <sys/wait.h>
 
@@ -42,9 +44,10 @@ int main(void) {
         pid_t pid = fork();
 
         if (pid < 0) {
-            /* fork() falló: no se pudo crear el proceso hijo */
+            /* Se deja de crear pedidos, pero sin salir: los hijos ya
+             * creados deben esperarse igual para no dejarlos huérfanos. */
             perror("fork");
-            exit(1);
+            break;
         }
 
         if (pid == 0) {
@@ -65,12 +68,21 @@ int main(void) {
         /* ---- El proceso padre continúa el ciclo para crear el siguiente pedido ---- */
     }
 
-    /* El proceso padre espera a que TODOS los hijos terminen */
-    for (int i = 0; i < N_PEDIDOS; i++) {
-        int estado;
-        pid_t hijo_terminado = wait(&estado);
-        printf("Mostrador: el proceso hijo PID %d terminó.\n", hijo_terminado);
+    /* wait() devuelve -1 con errno == ECHILD cuando ya no quedan hijos:
+     * así se espera a todos los que realmente se crearon, aunque un
+     * fork() haya fallado a mitad del ciclo. */
+    int estado;
+    pid_t hijo_terminado;
+    while ((hijo_terminado = wait(&estado)) > 0) {
+        if (WIFEXITED(estado))
+            printf("Mostrador: el proceso hijo PID %d terminó (código %d).\n",
+                   hijo_terminado, WEXITSTATUS(estado));
+        else
+            printf("Mostrador: el proceso hijo PID %d terminó de forma anormal.\n",
+                   hijo_terminado);
     }
+    if (errno != ECHILD)
+        perror("wait");
 
     printf("\nRestaurante cerrado: todos los pedidos fueron atendidos\n");
     return 0;

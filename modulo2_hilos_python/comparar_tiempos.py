@@ -27,11 +27,13 @@ def main():
 
     mejora = t_secuencial / t_concurrente
 
+    # 4 decimales: con 2 la mejora se redondea a "3.00x" y oculta el
+    # overhead de crear/planificar hilos que el informe debe explicar.
     print("\n=== Comparación de resultados ===")
     print(f"{'Modo':<15}{'Tiempo (s)':>12}")
-    print(f"{'Secuencial':<15}{t_secuencial:>12.2f}")
-    print(f"{'Concurrente':<15}{t_concurrente:>12.2f}")
-    print(f"\nMejora (secuencial / concurrente): {mejora:.2f}x")
+    print(f"{'Secuencial':<15}{t_secuencial:>12.4f}")
+    print(f"{'Concurrente':<15}{t_concurrente:>12.4f}")
+    print(f"\nMejora (secuencial / concurrente): {mejora:.4f}x")
 
 
 if __name__ == "__main__":
