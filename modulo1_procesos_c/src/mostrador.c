@@ -56,7 +56,7 @@ int main(void) {
             fflush(stdout);
 
             /* El hijo se reemplaza a sí mismo por el programa preparar_pedido */
-            execl("./preparar_pedido", "preparar_pedido", numero_str, NULL);
+            execl("./bin/preparar_pedido", "preparar_pedido", numero_str, NULL);
 
             /* Si execl() retorna, es porque falló */
             perror("execl");
